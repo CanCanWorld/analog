@@ -123,8 +123,8 @@ class ColorOutput:
 
     def print_banner(self, message="Default banner"):
         self.new_line(Fore.LIGHTMAGENTA_EX + " " * 10 + message + Style.RESET_ALL)
-        self.new_line(Fore.LIGHTYELLOW_EX + " " * 10 + "Blog: <https://www.testzero-wz.com>" + Style.RESET_ALL)
-        self.new_line(Fore.LIGHTYELLOW_EX + " " * 10 + "Email: <testzero.wz@gmail.com>\n\n" + Style.RESET_ALL)
+        self.new_line(Fore.LIGHTYELLOW_EX + " " * 10 + "GitHub: <https://github.com/CanCanWorld/analog>" + Style.RESET_ALL)
+        self.new_line(Fore.LIGHTYELLOW_EX + " " * 10 + "Email: <3480197195@qq.com>\n\n" + Style.RESET_ALL)
 
     def print_split_line(self, char="-", color='Y', message="", style=1):
         total_len = self.terminal_size
