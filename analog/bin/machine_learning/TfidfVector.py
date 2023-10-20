@@ -33,6 +33,7 @@ class TfidfVector(TfidfVectorizer):
             if len(fit_list) == 0:
                 raise FileEmptyError
             self.fit_vector = self.fit_transform(fit_list)
+            print('self.fit_vector: ', self.fit_vector)
         else:
             raise FileNotFound
 

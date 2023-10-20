@@ -11,6 +11,7 @@ def main():
     controller = None
     try:
         path = os.path.dirname(os.path.realpath(__file__))
+        print('path: ', path)
         controller = Controller(path)
         controller.mainloop()
     except KeyboardInterrupt:

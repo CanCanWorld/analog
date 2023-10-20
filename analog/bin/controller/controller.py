@@ -549,6 +549,7 @@ class Controller:
     def get_latest_time(self):
         print('get_latest_time')
         t = self.db.execute("SELECT time_local from %s ORDER BY 1 DESC limit 1" % self.table_name).fetchall()[0][0]
+        print('t: ', t)
         if not isinstance(t, datetime):
             return db_time2datetime(t)
         return t
