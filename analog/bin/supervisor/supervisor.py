@@ -61,8 +61,10 @@ class FileSupervisor:
         diff = DirectorySnapshotDiff(self.snap, current_snap)
         self.snap = current_snap
         if len(diff.files_modified) != 0:
+            print('modify')
             self.logger.modify(str(diff.files_modified))
         if len(diff.files_created) != 0:
+            print('create')
             self.logger.create(str(diff.files_created))
 
         changes = diff.files_modified + diff.files_created

@@ -26,6 +26,7 @@ class db:
         Connection = connect
 
     def connect_db(self):
+        print('connect_db')
         if Connection is None:
             raise ImportError("Database Lib import error.")
         if self.db_type == 'mysql':
@@ -71,6 +72,9 @@ class db:
             self.connect.close()
 
     def execute_many(self, sql, args):
+        print('execute_many')
+        print('sql: ', sql)
+        print('args: ', args)
         try:
             cursor = self.connect.cursor()
             cursor.executemany(sql, args)
@@ -117,6 +121,7 @@ class db:
             return False
 
     def create_db(self):
+        print('create_db')
         _connection = None
         try:
             _connection = None

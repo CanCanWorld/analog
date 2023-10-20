@@ -83,6 +83,7 @@ class Controller:
             raise DatabaseConfigError
 
         # 日志参数初始化
+        print('日志参数初始化')
         self.section_name_log = "Log"
         self.log_path = self.config.get(self.section_name_log, 'path')
         self.time_local_pattern = self.config.get(self.section_name_log, "time_local_pattern")
@@ -92,6 +93,7 @@ class Controller:
         self.acceptable_group_name = list(filter(lambda x: x in self.all_columns, self.log_regx.groupindex))
 
         # 数据初始化
+        print('数据初始化')
         self.db = db(self.config, root_path=self.path)
         self.logger = None
         self.analyser = None
@@ -101,6 +103,7 @@ class Controller:
         self.pool = None
 
         # 创建数据库
+        print('创建数据库')
         if self.config.get(self.section_name_database, 'initial') != '1':
             self.init_database()
             self.config.set(self.section_name_database, 'initial', '1')
@@ -173,6 +176,7 @@ class Controller:
         #         raise e
 
         # 审计模块和分析模块初始化
+        print('审计模块和分析模块初始化')
         self.logger = Logger(database=self.db, output=self.output, section_name_log=self.section_name_log,
                              ipdb=self.ip_db, controller=self, tfidfvector=self.tfidfVector, config=self.config,
                              model=self.model)
@@ -180,11 +184,13 @@ class Controller:
                                  controller=self, tfidfvector=self.tfidfVector, model=self.model)
 
         # 日志文件监视模块初始化
+        print('日志文件监视模块初始化')
         self.file_queue = Queue()
         self.supervisor = FileSupervisor(_path=self.log_path,
                                          _queue=self.file_queue,
                                          log_path=os.path.join(self.path, "analog/logs/file_log.log"))
         # 监视线程和更新日志线程开启
+        print('监视线程和更新日志线程开启')
         self.supervisor.start()
         self.output.print_info("Supervisor on.")
         self.update_thread = Thread(target=self.update_thread_func, daemon=True)
@@ -507,6 +513,7 @@ class Controller:
         """
         数据库初始化，数据库创建以及表创建
         """
+        print('init_database')
         self.db.create_db()
         conn = self.db.connect_db()
         cursor = conn.cursor()
@@ -540,6 +547,7 @@ class Controller:
         self.read_log_files(self.log_regx, sql)
 
     def get_latest_time(self):
+        print('get_latest_time')
         t = self.db.execute("SELECT time_local from %s ORDER BY 1 DESC limit 1" % self.table_name).fetchall()[0][0]
         if not isinstance(t, datetime):
             return db_time2datetime(t)
@@ -553,6 +561,7 @@ class Controller:
         return t
 
     def read_log_files(self, log_regx, sql):
+        print('read_log_files')
         # 日志数据处理
         count = 0
         arg_list = []
@@ -595,9 +604,11 @@ class Controller:
         :param sql: 插入sql
         :return:
         """
+        print('update_logs, sql=', sql)
         count = 0
         arg_list = []
         latest_time = self.get_latest_time()
+        print('latest_time: ', latest_time)
         for file in files:
             logic_end = False
             for line, is_last in stop_iter(reverse_read_lines(file)):
@@ -630,9 +641,11 @@ class Controller:
             # self.output.print_info("Load log => Done.")
 
     def update_thread_func(self):
+        print('update_thread_func')
         sql = "INSERT INTO %s (%s) VALUES (%s)" % (self.table_name,
                                                    ",".join(self.acceptable_group_name),
-                                                   ",".join(["?"] * len(self.acceptable_group_name)))
+                                                   ",".join(["%s"] * len(self.acceptable_group_name)))
+        print('sql: ', sql)
         while True:
             changes = None
             if self.update_thread_stop_flag:
