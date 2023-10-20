@@ -164,7 +164,6 @@ class Controller:
                      '<blue>retrain</blue> to train a new model.</yellow>'),
                 style=self.style)
             self.load_model()
-
         # else:
         #     try:
         #         if self.train() is False:
@@ -328,6 +327,7 @@ class Controller:
         self.output.print_special("Training  completed.")
 
     def load_model(self):
+        print('load_model')
         with open(os.path.join(self.path, r'analog/cache/model.pkl'), 'rb') as file:
             self.model = pickle.load(file)
         if self.logger is not None:
@@ -731,6 +731,7 @@ class Controller:
                 d_format_list.append(time.strftime("%H:%M:00"))
 
     def check_model_cache_exist(self):
+        print('check_model_cache_exist')
         model_path = os.path.join(self.path, 'analog/cache/model.pkl')
         try:
             if os.path.getsize(model_path) != 0:

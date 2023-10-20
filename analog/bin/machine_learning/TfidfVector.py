@@ -23,15 +23,19 @@ class TfidfVector(TfidfVectorizer):
         self.__fit()
 
     def __fit(self):
+        print('__fit')
         fit_list = []
+        print('log_path: ', self.log_path)
+
         if os.path.isfile(self.log_path):
-            read_by_group(self.log_path, fit_list, pattern=self.config.get(self.section_name_log, 'log_content_pattern'))
+            read_by_group(self.log_path, fit_list,
+                          pattern=self.config.get(self.section_name_log, 'log_content_pattern'))
             if len(fit_list) == 0:
                 raise FileEmptyError
             self.fit_vector = self.fit_transform(fit_list)
         else:
             raise FileNotFound
-            
+
     @staticmethod
     def vocabulary_iter():
         for i in string.printable:
