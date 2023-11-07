@@ -23,14 +23,12 @@ class Logger:
                           "log": {"log_type_str": "LOG", "func": self.logger.log}}
 
     def set_log_type_str(self, log_type, val):
-        print('set_log_type_str')
         self.log_types[log_type]['log_type_str'] = val
 
     def set_log_func(self, log_type, val):
         self.log_types[log_type]['func'] = val
 
     def create_log_type_str(self, log_type, log_type_str=None):
-        print('create_log_type_str')
         log_type_str = log_type if log_type_str is None else log_type_str
         self.log_types[log_type] = {"log_type_str": log_type_str, "func": self.logger.log}
 
@@ -65,7 +63,6 @@ class Logger:
 
     @staticmethod
     def _create_log_func(log_type, level=None, **kwargs):
-        print('_create_log_func')
 
         def function_template(cls, msg, **f_kwargs):
             cls.dispatch(msg=msg, **f_kwargs)

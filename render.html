@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+                <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+
+</head>
+<body >
+    <div id="ec2bf736af7a4f8fb08e52ffc99aadc4" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+        var chart_ec2bf736af7a4f8fb08e52ffc99aadc4 = echarts.init(
+            document.getElementById('ec2bf736af7a4f8fb08e52ffc99aadc4'), 'white', {renderer: 'canvas'});
+        var option_ec2bf736af7a4f8fb08e52ffc99aadc4 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "pie",
+            "colorBy": "data",
+            "legendHoverLink": true,
+            "selectedMode": false,
+            "selectedOffset": 10,
+            "clockwise": true,
+            "startAngle": 90,
+            "minAngle": 0,
+            "minShowLabelAngle": 0,
+            "avoidLabelOverlap": true,
+            "stillShowZeroSum": true,
+            "percentPrecision": 2,
+            "showEmptyCircle": true,
+            "emptyCircleStyle": {
+                "color": "lightgray",
+                "borderColor": "#000",
+                "borderWidth": 0,
+                "borderType": "solid",
+                "borderDashOffset": 0,
+                "borderCap": "butt",
+                "borderJoin": "bevel",
+                "borderMiterLimit": 10,
+                "opacity": 1
+            },
+            "data": [
+                {
+                    "name": "/rmsMessageApp_groupList.json?page=1&qry_receiverid=23101900001002 HTTP/1.1",
+                    "value": 41
+                },
+                {
+                    "name": "/rmsEvent_queryFoldedEventCount.json HTTP/1.1",
+                    "value": 41
+                },
+                {
+                    "name": "/rmsReport_queryHomePageHintNumber.json?qry_devicestate=0 HTTP/1.1",
+                    "value": 40
+                },
+                {
+                    "name": "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=02 HTTP/1.1",
+                    "value": 17
+                },
+                {
+                    "name": "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=00 HTTP/1.1",
+                    "value": 17
+                },
+                {
+                    "name": "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=01 HTTP/1.1",
+                    "value": 17
+                },
+                {
+                    "name": "/rmsReport_queryCodeList.json?code=RmsEventBigType HTTP/1.1",
+                    "value": 5
+                },
+                {
+                    "name": "/rmsOnDuty_list.json?page=1&rows=15&sidx=dutytime&sord=desc&qry_orgid=&qry_ondutyuserid=&qry_dutystate= HTTP/1.1",
+                    "value": 4
+                },
+                {
+                    "name": "/rmsOnDuty_approvalList.json?page=1&rows=15&sidx=dutytime&sord=desc HTTP/1.1",
+                    "value": 4
+                },
+                {
+                    "name": "/rmsNetworkCompany_queryTodayEventStatistics.json HTTP/1.1",
+                    "value": 3
+                },
+                {
+                    "name": "/rmsBuilding_refList.json?page=1&rows=100&sidx=sortcode&sord=asc&qry_networkcompanyid= HTTP/1.1",
+                    "value": 3
+                },
+                {
+                    "name": "/rmsDeviceMonitorMaster_queryLatestMonitorDataCount.json?qry_systype=11&qry_devicestate=0 HTTP/1.1",
+                    "value": 3
+                },
+                {
+                    "name": "/rmsWorkSheet_queryApprovalList.json?page=1&rows=15&sidx=CboApprovalNodeIns.createon&sord=desc&qry_type=Repair&qry_sheetstate=&qry_networkcompanyid=&qry_beginsubmitdate=&qry_endsubmitdate= HTTP/1.1",
+                    "value": 3
+                },
+                {
+                    "name": "/rmsScheduleExecBill_scheduleExecBillLineList.json?page=1&rows=15&sidx=RmsScheduleExecBill.execdate&sord=desc&qry_execstate=&qry_scheduleexectaskid=23092700000001&qry_buildingid=&qry_floorid=&qry_scheduletype=RmsInspectTask HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsBuilding_refList.json?page=1&rows=100&sidx=sortcode&sord=asc&qry_networkcompanyid=23091400000001 HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsScheduleExecTask_scheduleExecTaskApprovalList.json?page=1&rows=15&sidx=RmsScheduleExecTask.planbegindate&sord=desc&qry_networkcompanyid=&qry_execstate=&qry_scheduletype=RmsInspectTask&qry_begintime_start=&qry_begintime_end= HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsOrg_refList.json?page=1&rows=1000&sidx=name&sord=asc HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsUser_queryUserList.json?qry_selecttype=2&qry_networkcompanyid= HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsNetworkCompany_refList.json?page=1&rows=100&sidx=rmsNetworkCompany.sortcode&sord=asc&qry_grade=0&needdept=yes HTTP/1.1",
+                    "value": 2
+                },
+                {
+                    "name": "/rmsUser_queryUserInfo.json HTTP/1.1",
+                    "value": 2
+                }
+            ],
+            "radius": [
+                "0%",
+                "75%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "label": {
+                "show": true,
+                "margin": 8,
+                "formatter": "{b}: {c}"
+            },
+            "labelLine": {
+                "show": true,
+                "showAbove": false,
+                "length": 15,
+                "length2": 15,
+                "smooth": false,
+                "minTurnAngle": 90,
+                "maxSurfaceAngle": 90
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "/rmsMessageApp_groupList.json?page=1&qry_receiverid=23101900001002 HTTP/1.1",
+                "/rmsEvent_queryFoldedEventCount.json HTTP/1.1",
+                "/rmsReport_queryHomePageHintNumber.json?qry_devicestate=0 HTTP/1.1",
+                "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=02 HTTP/1.1",
+                "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=00 HTTP/1.1",
+                "/rmsEvent_queryFoldedEventList.json?page=1&rows=10&sidx=firetime&sord=desc&qry_eventbigtype=01 HTTP/1.1",
+                "/rmsReport_queryCodeList.json?code=RmsEventBigType HTTP/1.1",
+                "/rmsOnDuty_list.json?page=1&rows=15&sidx=dutytime&sord=desc&qry_orgid=&qry_ondutyuserid=&qry_dutystate= HTTP/1.1",
+                "/rmsOnDuty_approvalList.json?page=1&rows=15&sidx=dutytime&sord=desc HTTP/1.1",
+                "/rmsNetworkCompany_queryTodayEventStatistics.json HTTP/1.1",
+                "/rmsBuilding_refList.json?page=1&rows=100&sidx=sortcode&sord=asc&qry_networkcompanyid= HTTP/1.1",
+                "/rmsDeviceMonitorMaster_queryLatestMonitorDataCount.json?qry_systype=11&qry_devicestate=0 HTTP/1.1",
+                "/rmsWorkSheet_queryApprovalList.json?page=1&rows=15&sidx=CboApprovalNodeIns.createon&sord=desc&qry_type=Repair&qry_sheetstate=&qry_networkcompanyid=&qry_beginsubmitdate=&qry_endsubmitdate= HTTP/1.1",
+                "/rmsScheduleExecBill_scheduleExecBillLineList.json?page=1&rows=15&sidx=RmsScheduleExecBill.execdate&sord=desc&qry_execstate=&qry_scheduleexectaskid=23092700000001&qry_buildingid=&qry_floorid=&qry_scheduletype=RmsInspectTask HTTP/1.1",
+                "/rmsBuilding_refList.json?page=1&rows=100&sidx=sortcode&sord=asc&qry_networkcompanyid=23091400000001 HTTP/1.1",
+                "/rmsScheduleExecTask_scheduleExecTaskApprovalList.json?page=1&rows=15&sidx=RmsScheduleExecTask.planbegindate&sord=desc&qry_networkcompanyid=&qry_execstate=&qry_scheduletype=RmsInspectTask&qry_begintime_start=&qry_begintime_end= HTTP/1.1",
+                "/rmsOrg_refList.json?page=1&rows=1000&sidx=name&sord=asc HTTP/1.1",
+                "/rmsUser_queryUserList.json?qry_selecttype=2&qry_networkcompanyid= HTTP/1.1",
+                "/rmsNetworkCompany_refList.json?page=1&rows=100&sidx=rmsNetworkCompany.sortcode&sord=asc&qry_grade=0&needdept=yes HTTP/1.1",
+                "/rmsUser_queryUserInfo.json HTTP/1.1"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "title": [
+        {
+            "show": true,
+            "text": "\u997c\u72b6\u56fe\u793a\u4f8b",
+            "target": "blank",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ]
+};
+        chart_ec2bf736af7a4f8fb08e52ffc99aadc4.setOption(option_ec2bf736af7a4f8fb08e52ffc99aadc4);
+    </script>
+</body>
+</html>

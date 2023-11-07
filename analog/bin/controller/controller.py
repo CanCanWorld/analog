@@ -131,6 +131,7 @@ class Controller:
         self.key_bindings = None
 
         # TF-IDF向量填充词料库
+        print('TF-IDF向量填充词料库')
         tfidf_exist_flag = False
         self.tfidfVector = None
         try:
@@ -152,6 +153,7 @@ class Controller:
         self.train_progress = None
 
         # 模型缓存载入
+        print('模型缓存载入')
         if tfidf_exist_flag is False:
             print_formatted_text(
                 HTML('<yellow>Cause of you lack of TF-IDF corpus'

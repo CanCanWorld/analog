@@ -46,6 +46,7 @@ class Analyser:
         tf_idf_vector = self.tfidfvector.transform(list(fetch(res, 1)))
 
         y = self.model.predict(tf_idf_vector)
+        print('y: ', y)
         # 去除正常请求，只留异常请求
         for i in range(len(res) - 1, 0, -1):
             if y[i] == 1:

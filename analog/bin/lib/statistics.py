@@ -1,3 +1,6 @@
+from pyecharts.charts import Pie
+from pyecharts import options as opts
+
 from analog.bin.lib.sql import db
 from analog.bin.io.chart import Histogram
 from analog.bin.exception.Exceptions import *
@@ -63,6 +66,21 @@ class Statistics:
                                                 LIMIT 0,""" + str(N)
         )
         res = cursor.fetchall()
+        # show statistics url current day top 20
+        data = []
+        for item in res:
+            url, count = item
+            data.append((url[16:len(url)], count))
+        print('data: ', data)
+        pie = (
+            Pie()
+            .add("", data_pair=data)
+            .set_global_opts(title_opts=opts.TitleOpts(title="饼状图示例"))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
+        )
+
+        # 保存为 HTML 文件
+        pie.render()
         if res == ():
             self.output.print_info("No result", symbol="-")
             return

@@ -115,6 +115,7 @@ class Logger:
             if self.model:
                 predict_vector = self.tfidfvector.transform(fetch(res, 2))
                 predict_res = self.model.predict(predict_vector)
+                print('predict_res: ', predict_res)
                 for i in range(len(res)):
                     res[i] += (predict_res[i],)
             self.query_cache.extend(res)
@@ -123,11 +124,14 @@ class Logger:
                 self.freeze = True
 
         data = []
+        print('query_cache: ', self.query_cache)
 
         res = self.query_cache[self.offset:self.offset + self.show_num]
 
+        print('res: ', res)
         t = self.offset + 1
         for log_item in res:
+            print('log_item: ', log_item)
             list_temp = []
             str_temp = "{:^6s}".format("Ord:") + "│Status: " + self.get_status_color_font(log_item[1]) \
                        + '\n' + Fore.YELLOW + "{:^6d}".format(t) + Fore.RESET + "│Length: " + str(log_item[3]) \
@@ -141,6 +145,7 @@ class Logger:
                     geolocation_str = "".join(geolocation_list)
                 ip_str = log_item[6] + "\n" + geolocation_str
                 if self.model:
+                    print('log_item[7]: ', log_item[7])
                     ip_str += "\n" + "─" * (ip_str.find('\n') if ip_str.find('\n') != -1 else 1) + "\n" + \
                               (Fore.LIGHTBLUE_EX + "正常请求" if log_item[7] == 1 else Fore.LIGHTRED_EX + "恶意请求") + \
                               Fore.RESET

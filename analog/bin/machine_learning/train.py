@@ -58,17 +58,26 @@ class Train:
         read_by_group(self.test_white_path, white_example, pattern=pattern)
 
         # 特征向量化训练样本
+        print('特征向量化训练样本')
         tf_idf_vector = TfidfVector(self.root_path, self.config)
         train_vector = tf_idf_vector.fit_vector
-
         # 特征向量化黑/白样本
         test_normal_vector = tf_idf_vector.transform(white_example)
+        print('白样本\n', white_example)
+        print("特征名称: \n", tf_idf_vector.get_feature_names_out())
+        print('特征向量化白样本\n', test_normal_vector)
         test_abnormal_vector = tf_idf_vector.transform(black_example)
+        print('黑样本\n', black_example)
+        print("特征名称: \n", tf_idf_vector.get_feature_names_out())
+        print('特征向量化黑样本\n', test_abnormal_vector)
         # test_param_x = tf_idf_vector.transform(white_example + black_example)
         # test_param_y = [1] * len(white_example) + [-1] * len(black_example)
         # ============================================= 遍历调优参数nu与gamma ==========================================
+        # grid = {'gamma': np.logspace(-9, 1, 10),
+        #         'nu': np.linspace(0.00001, 0.2, 100)}
         grid = {'gamma': np.logspace(-9, 1, 10),
-                'nu': np.linspace(0.00001, 0.2, 100)}
+                'nu': np.linspace(0.00001, 0.2, 10)}
+        print('grid: ', grid)
         # ======================================= GridSearchCV遍历调优参数nu与gamma ======================================
         # scores = "f1"
         # clf = GridSearchCV(OneClassSVM(), grid, scoring=scores)
@@ -98,6 +107,7 @@ class Train:
         re_gamma = 0
 
         total_loop = len(ParameterGrid(grid))
+        print('total_loop: ', total_loop)
         process_count = 0
         for z in ParameterGrid(grid):
             process_count += 1
@@ -163,6 +173,7 @@ class Train:
         total_second = datetime.now() - start
         train_logger.end("Cost {}s.".format(total_second.total_seconds()))
         queue.put_nowait("1")
+        print('open analog/cache/model.pkl')
         with open(os.path.join(self.root_path, "analog/cache/model.pkl"), 'wb') as file:
             # svdd = OneClassSVM(**clf.best_params_)
             svdd.set_params(kernel=kernel, nu=nu_r_F1, gamma=gamma_r_F1)

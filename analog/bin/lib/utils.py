@@ -3,7 +3,7 @@ from urllib.parse import unquote
 from os import walk
 import gzip
 from datetime import datetime
-from collections import Iterable, Iterator
+from collections.abc import Iterable, Iterator
 
 
 def read_by_group(path, l: list, group_name='request', encoding='utf-8', pattern=None, N=None, clearFlag=True):
