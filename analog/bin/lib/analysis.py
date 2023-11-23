@@ -43,6 +43,7 @@ class Analyser:
             self.controller.get_time_condition(when, time_change=False, current_flag=True)
         )
         res = list(cursor.fetchall())
+        print('res: ', res)
         tf_idf_vector = self.tfidfvector.transform(list(fetch(res, 1)))
 
         y = self.model.predict(tf_idf_vector)

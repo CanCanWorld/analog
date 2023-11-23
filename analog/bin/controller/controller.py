@@ -71,7 +71,7 @@ class Controller:
         self.config_path = os.path.join(self.path, "config.ini")
         self.default_config_path = os.path.join(self.path, "analog/conf/default_config.ini")
         self.all_columns = ["remote_addr", "remote_user", "time_local", "request", "status", "body_bytes_sent",
-                            "http_referer", "http_user_agent", "http_x_forwarded_for"]
+                            "http_referer", "http_user_agent", "http_x_forwarded_for", "normal"]
 
         self.time = datetime.now()
         self.output = ColorOutput()
@@ -90,7 +90,9 @@ class Controller:
         self.log_file_pattern = self.config.get(self.section_name_log, "log_file_pattern")
         self.log_pattern = self.config.get(self.section_name_log, 'log_content_pattern')
         self.log_regx = re.compile(self.log_pattern)
-        self.acceptable_group_name = list(filter(lambda x: x in self.all_columns, self.log_regx.groupindex))
+        # self.acceptable_group_name = list(filter(lambda x: x in self.all_columns, self.log_regx.groupindex))
+        self.acceptable_group_name = self.all_columns
+        print('self.acceptable_group_name: ', self.acceptable_group_name)
 
         # 数据初始化
         print('数据初始化')
@@ -530,7 +532,8 @@ class Controller:
                              body_bytes_sent INT DEFAULT 0,
                              http_referer TEXT,
                              http_user_agent TEXT,
-                             http_x_forwarded_for TEXT);
+                             http_x_forwarded_for TEXT,
+                             normal TEXT);
                              """ % self.table_name
         cursor.execute(sql)
         conn.commit()
@@ -631,7 +634,15 @@ class Controller:
                         # 转换日志时间格式为数据库时间格式，方便插入数据库及后续使用数据库时间函数
                         single_line_arg[self.acceptable_group_name.index('time_local')] = log2db_time(
                             log_tuple.group('time_local'), log_str=self.time_local_pattern)
-
+                        print('single_line_arg: ', single_line_arg)
+                        res = [(single_line_arg[self.acceptable_group_name.index('remote_addr')],
+                                single_line_arg[self.acceptable_group_name.index('request')])]
+                        print('res: ', res)
+                        tf_idf_vector = self.tfidfVector.transform(list(fetch(res, 1)))
+                        y = self.model.predict(tf_idf_vector)
+                        print('y: ', y)
+                        single_line_arg.append(int(y[0]))
+                        print('single_line_arg2: ', single_line_arg)
                         arg_list.append(single_line_arg)
                         count += 1
                     if logic_end or count % 5000 == 0 or is_last and count != 0:

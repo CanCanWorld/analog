@@ -34,6 +34,10 @@ if __name__ == '__main__':
     print("特征名称: \n", tv.get_feature_names_out())
     print("tv_fit: \n", tv_fit)
 
+    data = ["label1", "label2", "label3", "label4", "label_i"]
+    with open("D:\\project\\python\\analog\\analog\\cache\\model.pkl", "wb") as f:
+        pickle.dump(data, f)
+
     # fr = open("D:\\project\\python\\analog\\analog\\cache\\model.pkl", 'rb')  # open的参数是pkl文件的路径
     # inf = pickle.load(fr)  # 读取pkl文件的内容
     # print(inf)
